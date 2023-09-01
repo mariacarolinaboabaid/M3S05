@@ -1,0 +1,118 @@
+<app-header></app-header>
+
+<div class="container mt-5">
+    <!-- Carrousel -->
+    <div id="carouselExample" class="carousel slide">
+        <div class="carousel-inner">
+            <!-- Primeira img -->
+            <div class="carousel-item active" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <img src="../../../assets/curso.png" class="d-block w-100" alt="Curso Desenvolvimento FullStack"
+                    style="max-height: 500px;">
+            </div>
+            <!-- Segunda img -->
+            <div class="carousel-item" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <img src="../../../assets/curso2.png" class="d-block w-100" alt="Curso de React"
+                    style="max-height: 500px;">
+            </div>
+            <!-- Terceira img -->
+            <div class="carousel-item" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <img src="../../../assets/curso3.png" class="d-block w-100" alt="Curso de Ciência de Dados com Python"
+                    style="max-height: 500px;">
+            </div>
+        </div>
+        <!-- Botões -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Título -->
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Formulário de Avaliação</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <!-- Body -->
+                <div class="modal-body">
+                    <form [formGroup]="formularioAvaliacao" (ngSubmit)="onSubmit()" #form="ngForm">
+
+                        <!-- Nome curso -->
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" formControlName="nomeCurso" name="nomeCurso" id="nomeCurso">
+
+                            <label for="nomeCurso">Nome do curso</label>
+
+                            <span *ngIf="mensagemCampoInvalido('nomeCurso')">
+                                Campo de preenchimento obrigatório!
+                            </span>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" formControlName="email" name="email" id="email">
+
+                            <label for="email">Email</label>
+
+                            <span *ngIf="mensagemCampoInvalido('email')">
+                                Campo de preenchimento obrigatório!
+                            </span>
+                        </div>
+
+                        <!-- Data de nascimento -->
+                        <div class="form-floating mb-3">
+                            <input type="date" name="dataNascimento" id="dataNascimento" class="form-control" formControlName="dataNascimento">
+
+                            <label for="dataNascimento">Data de nascimento</label>
+
+                            <span *ngIf="mensagemCampoInvalido('dataNascimento')">
+                                Campo de preenchimento obrigatório!
+                            </span>
+                        </div>
+
+                        <!-- Feedback -->
+                        <div class="form-floating mb-3">
+                            <textarea name="feedback" id="feedback" class="form-control"  formControlName="feedback" style="height: 100px"></textarea>
+
+                            <label for="feedback">Escreva seu feedback aqui!</label>
+
+                            <span *ngIf="mensagemCampoInvalido('feedback')">
+                                Campo de preenchimento obrigatório!
+                            </span>
+                          </div>
+
+                        <!-- Nota -->
+                        <div class="form-floating mb-3">
+                            <input type="number" name="nota" id="nota" class="form-control" formControlName="nota" min="1" max="5">
+
+                            <label for="nota">Nota</label>
+
+                            <span *ngIf="mensagemCampoInvalido('nota')">
+                                Campo de preenchimento obrigatório!
+                            </span>
+                        </div>
+
+                        <!-- Botões -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                            <button type="submit" (click)="onSubmit" class="btn btn-primary">Enviar</button>
+                        </div>
+
+                    </form>
+                </div>
+
+           
+                
+            </div>
+        </div>
+    </div>
+
+</div>

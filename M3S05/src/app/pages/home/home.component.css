@@ -1,0 +1,19 @@
+div.container.mt-5 {
+    width: 100vw;
+    background-color: #000080;
+}
+
+#carouselExample {
+    box-shadow: 3px 1px 15px black;
+    width: 50vw;
+    margin: auto;
+
+}
+
+span {
+    margin: 10px 0px;
+    color: red;
+    font-size: 12px;
+    display: block;
+}
+
