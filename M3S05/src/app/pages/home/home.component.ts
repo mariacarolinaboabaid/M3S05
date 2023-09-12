@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, TemplateRef, ViewChild } from '@angular/core';
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-home',
@@ -8,29 +8,18 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class HomeComponent {
 
-  formularioAvaliacao: FormGroup
+  @ViewChild('modalFormulario', {static: true}) modalFormulario: TemplateRef<any> | undefined;
+  modalUploadRef: NgbModalRef | undefined;
 
-  constructor()
-  {
-    this.formularioAvaliacao = new FormGroup(
-      {
-        'nomeCurso': new FormControl('', Validators.required),
-        'email': new FormControl('', [Validators.required, Validators.email]),
-        'dataNascimento': new FormControl('', Validators.required),
-        'feedback': new FormControl('', Validators.required),
-        'nota': new FormControl('', Validators.required),
-      }
-    )
+  constructor(private modalService: NgbModal) {}
+
+  openModalFormulario(){
+    this.modalUploadRef = this.modalService.open(this.modalFormulario)
   }
 
-  onSubmit()
-  {
-    console.log("Testanto!")
-  }
-
-  mensagemCampoInvalido(field: string) {
-    return (this.formularioAvaliacao.get(field)?.value === null || this.formularioAvaliacao.get(field)?.value.length === 0) && this.formularioAvaliacao.get(field)?.touched
-  }
+  closeModal() {
+    this.modalUploadRef?.close();
+    }
 
 }
 
